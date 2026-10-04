@@ -33,7 +33,7 @@ jobs:
           sdk_root="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
           sdkmanager=$(find "$sdk_root/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)
           yes | "$sdkmanager" --licenses >/dev/null
-          "$sdkmanager" "platforms;android-37" "ndk;29.0.14206865"
+          "$sdkmanager" --channel=3 "platforms;android-37" "ndk;29.0.14206865"
           printf 'sdk.dir=%s\nndk.dir=%s/ndk/29.0.14206865\n' "$sdk_root" "$sdk_root" > local.properties
 
       - name: Build debug APK
